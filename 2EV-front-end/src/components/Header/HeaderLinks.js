@@ -12,7 +12,12 @@ import ListItem from "@material-ui/core/ListItem";
 import Tooltip from "@material-ui/core/Tooltip";
 
 // @material-ui/icons
-import { Apps, CloudDownload, Contacts, AccountCircle } from "@material-ui/icons";
+import {
+  Apps,
+  CloudDownload,
+  Contacts,
+  AccountCircle
+} from "@material-ui/icons";
 
 // core components
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
@@ -51,7 +56,7 @@ export default function HeaderLinks(props) {
 
   return (
     <List className={classes.list}>
-<ListItem className={classes.listItem}>
+      <ListItem className={classes.listItem}>
         <CustomDropdown
           noLiPadding
           buttonText={name ? name : "Account"}
@@ -63,7 +68,11 @@ export default function HeaderLinks(props) {
           dropdownList={
             name
               ? [
-                  <Link to="/" onClick={logout} className={classes.dropdownLink}>
+                  <Link
+                    to="/"
+                    onClick={logout}
+                    className={classes.dropdownLink}
+                  >
                     Log Out
                   </Link>,
                   <Link to="/dashboard" className={classes.dropdownLink}>
@@ -92,7 +101,6 @@ export default function HeaderLinks(props) {
           <CloudDownload className={classes.icons} /> About
         </Button>
       </ListItem>
-      
     </List>
   );
 }
