@@ -12,12 +12,7 @@ import ListItem from "@material-ui/core/ListItem";
 import Tooltip from "@material-ui/core/Tooltip";
 
 // @material-ui/icons
-import {
-  Apps,
-  CloudDownload,
-  Contacts,
-  AccountCircle
-} from "@material-ui/icons";
+import { Apps, CloudDownload, Contacts, AccountCircle } from "@material-ui/icons";
 
 // core components
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
@@ -29,15 +24,32 @@ import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js
 import { useDispatch, useSelector } from "react-redux";
 import { USER_SIGN_OUT } from "actions/actionTypes";
 
+// import recompose 
+import { compose } from 'recompose';
+
+// import router HOC
+import { withRouter } from 'react-router';
+
 import Swal from "sweetalert2";
 
 const useStyles = makeStyles(styles);
 
-export default function HeaderLinks(props) {
+const HeaderLinks = (props) => {
   const classes = useStyles();
 
   const name = useSelector(state => state.user.name);
   const dispatch = useDispatch();
+
+  const pushTo = (route = "/") => () =>  {
+    // Object Destructing. Same as const push = props.history.push but shorter and nicer.
+    const { history: { push } } = props;
+    push(route);
+  };
+  
+  const matchesRoute = (route) => {
+    const { history: {location: { pathname } }} = props;
+    return route === pathname;
+  }
 
   const logout = async () => {
     try {
@@ -56,7 +68,7 @@ export default function HeaderLinks(props) {
 
   return (
     <List className={classes.list}>
-      <ListItem className={classes.listItem}>
+  <ListItem className={classes.listItem}>
         <CustomDropdown
           noLiPadding
           buttonText={name ? name : "Account"}
@@ -68,11 +80,7 @@ export default function HeaderLinks(props) {
           dropdownList={
             name
               ? [
-                  <Link
-                    to="/"
-                    onClick={logout}
-                    className={classes.dropdownLink}
-                  >
+                  <Link to="/" onClick={logout} className={classes.dropdownLink}>
                     Log Out
                   </Link>,
                   <Link to="/dashboard" className={classes.dropdownLink}>
@@ -93,14 +101,26 @@ export default function HeaderLinks(props) {
 
       <ListItem className={classes.listItem}>
         <Button
-          href="/Profile"
           color="transparent"
-          target="_blank"
-          className={classes.navLink}
+          onClick={pushTo('/profile')}
+          className={matchesRoute('/profile') ? classes.navLinkHover : classes.navLink}
         >
           <CloudDownload className={classes.icons} /> About
         </Button>
       </ListItem>
+
+      <ListItem className={classes.listItem}>
+        <Button
+          color="transparent"
+          onClick={pushTo('/booking')}
+          className={matchesRoute('/booking') ? classes.navLinkHover : classes.navLink}
+        >
+          <CloudDownload className={classes.icons} /> Booking
+        </Button>
+      </ListItem>
+      
     </List>
   );
 }
+
+export default compose(withRouter)(HeaderLinks);
