@@ -43,7 +43,7 @@ export default function ProfilePage(props) {
         color="transparent"
         routes={dashboardRoutes}
         logo={logo}
-        brand="Excalibur"
+        brand="PhotoByDana"
         rightLinks={<HeaderLinks />}
         fixed
         changeColorOnScroll={{

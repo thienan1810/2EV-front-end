@@ -59,7 +59,7 @@ export default function LandingPage(props) {
         color="transparent"
         routes={dashboardRoutes}
         logo={logo}
-        brand="Freelancer Scheduler"
+        brand="PhotoByDana"
         rightLinks={<HeaderLinks />}
         fixed
         changeColorOnScroll={{
@@ -77,7 +77,7 @@ export default function LandingPage(props) {
               <h1 className={classes.title}>Book your appointment online.</h1>
               <br></br>
               <h4 style={paraStyle}>
-                See what{"'"}s available and request your appointent now.
+                See what{"'"}s available and request your appointment now.
               </h4>
             </GridItem>
           </GridContainer>

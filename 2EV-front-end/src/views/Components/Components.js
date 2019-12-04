@@ -38,7 +38,7 @@ export default function Components(props) {
   return (
     <div>
       <Header
-        brand="Excalibur"
+        brand="PhotoByDana"
         rightLinks={<HeaderLinks />}
         fixed
         color="transparent"
@@ -53,9 +53,8 @@ export default function Components(props) {
           <GridContainer>
             <GridItem>
               <div className={classes.brand}>
-                <h1 className={classes.title}>Excalibur</h1>
+                <h1 className={classes.title}>PhotoByDana</h1>
                 <h3 className={classes.subtitle}>
-                  A Badass Material-UI Kit based on Material Design.
                 </h3>
               </div>
             </GridItem>
