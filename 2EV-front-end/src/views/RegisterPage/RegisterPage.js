@@ -91,7 +91,7 @@ const LoginPage = (props)  =>{
       <Header
         absolute
         color="transparent"
-        brand="Material Kit React"
+        brand="Photos By Kevin"
         rightLinks={<HeaderLinks />}
         {...rest}
       />
