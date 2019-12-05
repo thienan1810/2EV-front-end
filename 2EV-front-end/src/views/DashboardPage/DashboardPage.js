@@ -55,7 +55,7 @@ export default function DashboardPage(props) {
         }}
         {...rest}
       />
-      <Parallax small filter image={require("assets/img/black.png")} />
+      <Parallax small filter image={require("assets/img/bg9.jpg")} />
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div>
           <div className={classes.container}>

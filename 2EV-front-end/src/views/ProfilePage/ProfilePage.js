@@ -67,7 +67,7 @@ export default function ProfilePage(props) {
                     <img src={profile} alt="..." className={imageClasses} />
                   </div>
                   <div className={classes.name}>
-                    <h3 className={classes.title}>Firstname LastName</h3>
+                    <h3 className={classes.title}>Kevin R.</h3>
                     <h6>PHOTOGRAPHER</h6>
                     <Button justIcon link href="https://twitter.com/realDonaldTrump" className={classes.margin5}>
                       <i className={"fab fa-twitter"} />
