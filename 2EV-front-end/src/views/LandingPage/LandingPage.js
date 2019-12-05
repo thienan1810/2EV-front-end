@@ -27,6 +27,11 @@ const useStyles = makeStyles(styles);
 export default function LandingPage(props) {
   const classes = useStyles();
   const { ...rest } = props;
+  const pushTo = (route = "/") => () =>  {
+    // Object Destructing. Same as const push = props.history.push but shorter and nicer.
+    const { history: { push } } = props;
+    push(route);
+  };
   return (
     <div>
       <Header
@@ -56,7 +61,7 @@ export default function LandingPage(props) {
               <Button
                 color="danger"
                 size="lg"
-                href="/booking"
+                onClick={pushTo('/booking')}
                 target="_blank"
                 rel="noopener noreferrer"
               >

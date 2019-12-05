@@ -1,11 +1,9 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-
-// @material-ui/icons
-
+import { useSelector } from "react-redux";
 // core components
 import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
@@ -16,42 +14,68 @@ import HeaderLinks from "components/Header/HeaderLinks.js";
 import Parallax from "components/Parallax/Parallax.js";
 
 import styles from "assets/jss/material-kit-react/views/landingPage.js";
+import logo from "assets/img/badge.png";
+import Calendar from "components/Calendar/Calendar";
 
-import logo from 'assets/img/bg8.jpg';
+const API_BASE = "http://localhost:8080";
 
 const dashboardRoutes = [];
 
 const useStyles = makeStyles(styles);
 
 const paraStyle = {
-  display: 'inline'
+  display: "inline"
 };
 
-const titleStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
-  alignContent: 'center',
-  containter: 'true'
-}
-
-export default function LandingPage(props) {
+const BookingPage = props => {
   const classes = useStyles();
   const { ...rest } = props;
+  const [events, setEvents] = useState([]);
+  const token = useSelector(state => state.user.token);
 
-  const [firstName, setfirstName] =useState("");
-  const [lastName, setlastName] =useState("");
-  const [email, setemail] =useState("");
-  const [schedule, setschedule] =useState([]);
-  const [confirmationModalOpen, setconfirmationModalOpen] =useState(false);
-  const [appointmentDateSelected, setappointmentDateSelected] =useState(false);
-  const [appointmentMeridiem, setappointmentMeridiem] =useState(0);
-  const [validEmail, setvalidEmail] =useState(true);
-  const [validPhone, setvalidPhone] =useState(true);
-  const [finished, setfinished] =useState(false);
-  const [smallScreen, setsmallScreen] =useState(window.innerWidth < 768);
-  const [stepIndex, setstepIndex] =useState(0);  
+  useEffect(() => {
+    const fetchEvents = async () => {
+      const url = `${API_BASE}/booking`;
+      const result = await fetch(url, {
+        method: "GET",
+        headers: {
+          Authorization: token,
+          "Content-Type": "application/json"
+        }
+      });
+      const { appointments } = await result.json();
+      const newEvents = appointments.map(
+        ({ title, end, start, number, name }) => ({
+          title,
+          end,
+          start,
+          number,
+          name
+        })
+      );
+      setEvents(newEvents);
+    };
+    fetchEvents();
+  }, []);
+
+  // event for creating appointments
+  const postEvent = async event => {
+    console.log("EVENT => ", event);
+    const url = `${API_BASE}/booking/create`;
+    try {
+      const result = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify({ ...event }),
+        headers: {
+          Authorization: token,
+          "Content-Type": "application/json"
+        }
+      });
+      setEvents([...events, event]);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <div>
@@ -59,7 +83,7 @@ export default function LandingPage(props) {
         color="transparent"
         routes={dashboardRoutes}
         logo={logo}
-        brand="PhotoByDana"
+        brand="Photo by Kevin"
         rightLinks={<HeaderLinks />}
         fixed
         changeColorOnScroll={{
@@ -68,16 +92,17 @@ export default function LandingPage(props) {
         }}
         {...rest}
       />
-      {/* <Parallax filter image={require("assets/img/woman-hair-styling.jpg")}> */}
-      {/* <Parallax filter image={require("assets/img/brunette-woman-in-salon-chair.jpg")}> */}
-      <Parallax filter image={require("assets/img/bg8.jpg")}>
+      <Parallax
+        filter
+        image={require("assets/img/black.png")}
+      >
         <div className={classes.container}>
           <GridContainer name="titleText" /*style={titleStyle}*/>
             <GridItem xs={12} sm={12} md={6}>
               <h1 className={classes.title}>Book your appointment online.</h1>
               <br></br>
               <h4 style={paraStyle}>
-                See what{"'"}s available and request your appointment now.
+                See what{"'"}s available and request your appointent now.
               </h4>
             </GridItem>
           </GridContainer>
@@ -85,9 +110,18 @@ export default function LandingPage(props) {
       </Parallax>
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
+          <GridContainer justify="center">
+            <GridItem xs={12} sm={12} md={12}>
+              <div style={{ margin: 16 }}>
+                <Calendar events={events} onChange={e => postEvent(e)} />
+              </div>
+            </GridItem>
+          </GridContainer>
         </div>
       </div>
       <Footer />
     </div>
   );
-}
+};
+
+export default BookingPage;
