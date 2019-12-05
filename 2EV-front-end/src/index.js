@@ -9,7 +9,6 @@ import "assets/scss/material-kit-react.scss?v=1.8.0";
 // The line below is used to ignore the warning about unused 
 // variable for line 13.
 // eslint-disable-next-line
-import Components from "views/Components/Components.js";
 import LandingPage from "views/LandingPage/LandingPage.js";
 import ProfilePage from "views/ProfilePage/ProfilePage.js";
 import LoginPage from "views/LoginPage/LoginPage.js";
