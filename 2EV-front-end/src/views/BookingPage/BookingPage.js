@@ -94,7 +94,7 @@ const BookingPage = props => {
       />
       <Parallax
         filter
-        image={require("assets/img/black.png")}
+        image={require("assets/img/bg9.jpg")}
       >
         <div className={classes.container}>
           <GridContainer name="titleText" /*style={titleStyle}*/>
