@@ -16,15 +16,27 @@ const CalendarComponent = ({ events, onChange }) => {
     })
       .queue(["Name", "Phone Number", "Desired Service"])
       .then(result => {
-        if (result.value) {
-          const [name, number, service] = result.value;
-          onChange({
-            start,
-            end,
-            title: service,
-            name,
-            number
-          });
+        if (result.value !== undefined) {
+          if (
+            result.value[0] !== "" &&
+            result.value[1] !== "" &&
+            result.value[2] !== ""
+          ) {
+            const [name, number, service] = result.value;
+            onChange({
+              start,
+              end,
+              title: service,
+              name,
+              number
+            });
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "Error",
+              text: "Input missing"
+            });
+          }
         }
       });
   };
@@ -52,7 +64,7 @@ const CalendarComponent = ({ events, onChange }) => {
         max={new Date(0, 0, 0, 18, 0, 0)}
         selectable
         dayLayoutAlgorithm="no-overlap"
-        views={['week', 'day']}
+        views={["week", "day"]}
         defaultView={Views.WEEK}
         defaultDate={moment().toDate()}
         localizer={localizer}
