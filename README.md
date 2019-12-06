@@ -9,7 +9,7 @@ Make sure nodemon is installed as well.
 The process should be taken care of by typing "npm install" in the 2EV-FRONT-END folder.
 
 Start the server by:
-1. cd cd 2EV-front-end/2EV-front-end/
+1. cd 2EV-front-end/2EV-front-end/
 2. npm start
 [In a new terminal tab/window]
 3. cd 2EV-front-end/2EV-front-end/backend
