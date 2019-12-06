@@ -16,6 +16,8 @@ import Parallax from "components/Parallax/Parallax.js";
 import styles from "assets/jss/material-kit-react/views/landingPage.js";
 import logo from "assets/img/badge.png";
 import Calendar from "components/Calendar/Calendar";
+import Swal from 'sweetalert2';
+
 
 const API_BASE = "http://localhost:8080";
 
@@ -72,6 +74,11 @@ const BookingPage = props => {
         }
       });
       setEvents([...events, event]);
+      Swal.fire(
+        'Success!',
+        'Thank you for making an appointment with us!',
+        'success'
+      )
     } catch (e) {
       console.log(e);
     }
