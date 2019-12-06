@@ -68,10 +68,7 @@ export default function DashboardPage(props) {
                     align="center"
                     style={{ margin: 24 }}
                   >
-                    Welcome,{" "}
-                    <b>
-                      {name}
-                    </b>
+                    Welcome, <b>{name}</b>
                   </Typography>
                   <Typography variant="h6" align="center">
                     {hasEvents ? "Upcoming Appointments" : "No Appointments"}
