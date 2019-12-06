@@ -62,7 +62,7 @@ export default function DashboardPage(props) {
           <div className={classes.container}>
             <GridContainer justify="center">
               <GridItem xs={12} sm={12} md={6}>
-                <div style={{ height: 500, position: "relative" }}>
+                <div style={{ marginBottom: '40px' }}>
                   <Typography
                     variant="h4"
                     align="center"

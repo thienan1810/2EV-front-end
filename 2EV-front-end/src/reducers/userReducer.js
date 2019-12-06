@@ -17,6 +17,7 @@ import {
             token: action.payload.token,
             email: action.payload.email,
             name: action.payload.name,
+            isAdmin: action.payload.isAdmin
           };
         case USER_SIGN_OUT:
           return initialState;

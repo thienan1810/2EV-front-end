@@ -18,6 +18,7 @@ const API_BASE = "http://localhost:8080";
 const ServiceList = ({ setHasEvents }) => {
   const [events, setEvents] = useState([]);
   const token = useSelector(state => state.user.token);
+  const isAdmin = useSelector(state => state.user.isAdmin);
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -43,7 +44,38 @@ const ServiceList = ({ setHasEvents }) => {
       setEvents(newEvents);
       setHasEvents(newEvents.length > 0);
     };
-    fetchEvents();
+
+    const fetchEventsAdmin = async () => {
+      const url = `${API_BASE}/booking/adminFetch`;
+      const result = await fetch(url, {
+        method: "GET",
+        headers: {
+          Authorization: token,
+          "Content-Type": "application/json"
+        }
+      });
+      const { appointments } = await result.json();
+      const newEvents = appointments.map(
+        ({ title, end, start, number, name, _id }) => ({
+          title,
+          end,
+          start,
+          number,
+          name,
+          _id
+        })
+      );
+      setEvents(newEvents);
+      setHasEvents(newEvents.length > 0);
+    };
+
+    if (isAdmin) {
+      fetchEventsAdmin();
+    } else {
+      fetchEvents();
+    }
+
+    //fetchEvents();
   }, []);
 
   const deleteEvent = async _id => {
@@ -71,7 +103,7 @@ const ServiceList = ({ setHasEvents }) => {
           </Avatar>
         </ListItemAvatar>
         <ListItemText
-          primary={event.title}
+          primary={isAdmin ? event.title + " with " + event.name: event.title}
           secondary={moment(event.start).format("LLL")}
         />
         <ListItemSecondaryAction>

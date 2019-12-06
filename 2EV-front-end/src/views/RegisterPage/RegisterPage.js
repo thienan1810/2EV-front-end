@@ -42,6 +42,7 @@ const LoginPage = (props)  =>{
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [isEmpty, setIsEmpty] = useState(true);
 
   const signup = async () => {
     if (!passwordsMatch()) {

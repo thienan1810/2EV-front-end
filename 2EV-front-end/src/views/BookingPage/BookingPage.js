@@ -17,6 +17,8 @@ import styles from "assets/jss/material-kit-react/views/landingPage.js";
 import logo from "assets/img/badge.png";
 import Calendar from "components/Calendar/Calendar";
 
+import Swal from 'sweetalert2';
+
 const API_BASE = "http://localhost:8080";
 
 const dashboardRoutes = [];
@@ -32,10 +34,11 @@ const BookingPage = props => {
   const { ...rest } = props;
   const [events, setEvents] = useState([]);
   const token = useSelector(state => state.user.token);
+  const isAdmin = useSelector(state => state.user.isAdmin);
 
   useEffect(() => {
-    const fetchEvents = async () => {
-      const url = `${API_BASE}/booking`;
+    const fetchEventsAdmin = async () => {
+      const url = `${API_BASE}/booking/adminFetch`;
       const result = await fetch(url, {
         method: "GET",
         headers: {
@@ -54,8 +57,10 @@ const BookingPage = props => {
         })
       );
       setEvents(newEvents);
+
     };
-    fetchEvents();
+
+    fetchEventsAdmin();
   }, []);
 
   // event for creating appointments
@@ -72,10 +77,17 @@ const BookingPage = props => {
         }
       });
       setEvents([...events, event]);
+      Swal.fire(
+        'Success!',
+        'Thank you for making an appointment with us!',
+        'success'
+      )
     } catch (e) {
       console.log(e);
     }
   };
+
+
 
   return (
     <div>
@@ -92,10 +104,7 @@ const BookingPage = props => {
         }}
         {...rest}
       />
-      <Parallax
-        filter
-        image={require("assets/img/bg9.jpg")}
-      >
+      <Parallax filter image={require("assets/img/bg9.jpg")}>
         <div className={classes.container}>
           <GridContainer name="titleText" /*style={titleStyle}*/>
             <GridItem xs={12} sm={12} md={6}>

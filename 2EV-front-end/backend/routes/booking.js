@@ -56,6 +56,21 @@ router.get(
     }
   }
 );
+
+router.get(
+  "/adminFetch",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res, next) => {
+    try {
+      const appointments = await Appointment.find({});
+      console.log(appointments);
+      return res.json({ appointments });
+    } catch (e) {
+      return res.json({ msg: e });
+    }
+  }
+);
+
 router.get(
   "/new",
   passport.authenticate("jwt", { session: false }),

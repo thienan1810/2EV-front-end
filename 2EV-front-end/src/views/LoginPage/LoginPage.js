@@ -54,10 +54,9 @@ export default function LoginPage(props) {
       const { token, user } = await result.json();
       dispatch({
         type: USER_SIGN_IN,
-        payload: { token, email: user.email, name: user.name }
+        payload: { token, email: user.email, name: user.name, isAdmin: user.isAdmin }
       });
-      push("/dashboard");   
-
+      push("/dashboard");
     } catch (e) {
       Swal.fire({
         icon: "error",
