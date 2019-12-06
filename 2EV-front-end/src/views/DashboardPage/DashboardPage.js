@@ -4,18 +4,14 @@ import classNames from "classnames";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
-import { LocationCity, Devices } from "@material-ui/icons/";
 import { Typography } from "@material-ui/core";
 // core components
 import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
-import Button from "components/CustomButtons/Button.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
-import NavPills from "components/NavPills/NavPills.js";
 import Parallax from "components/Parallax/Parallax.js";
-import CustomTabs from "components/CustomTabs/CustomTabs.js";
 import { useSelector } from "react-redux";
 import ServiceList from "./ServiceList";
 
@@ -32,13 +28,6 @@ export default function DashboardPage(props) {
   const name = useSelector(state => state.user.name);
   const isAdmin = useSelector(state => state.user.isAdmin);
   const { ...rest } = props;
-  const imageClasses = classNames(
-    classes.imgRaised,
-    classes.imgRoundedCircle,
-    classes.imgFluid
-  );
-  const navImageClasses = classNames(classes.imgRounded, classes.imgGallery);
-
   const [hasEvents, setHasEvents] = useState(false);
 
   return (

@@ -20,13 +20,7 @@ import styles from "assets/jss/material-kit-react/views/landingPage.js";
 // Sections for this page
 import ProductSection from "./Sections/ProductSection.js";
 
-// react components for routing our app without refresh
-import { Link } from "react-router-dom";
-
-import { useDispatch, useSelector } from "react-redux";
-
-// import router HOC
-import { withRouter } from "react-router";
+import { useSelector } from "react-redux";
 
 const dashboardRoutes = [];
 
