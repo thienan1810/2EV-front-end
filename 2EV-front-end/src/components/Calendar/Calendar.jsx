@@ -61,7 +61,7 @@ const CalendarComponent = ({ events, onChange }) => {
       <Calendar
         events={events.map(mapToRBCFormat)}
         min={new Date(0, 0, 0, 9, 0, 0)}
-        max={new Date(0, 0, 0, 18, 0, 0)}
+        max={new Date(0, 0, 0, 17, 0, 0)}
         selectable
         dayLayoutAlgorithm="no-overlap"
         views={["week", "day"]}
