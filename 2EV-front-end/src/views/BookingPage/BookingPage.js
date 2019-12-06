@@ -16,6 +16,8 @@ import Parallax from "components/Parallax/Parallax.js";
 import styles from "assets/jss/material-kit-react/views/landingPage.js";
 import logo from "assets/img/badge.png";
 import Calendar from "components/Calendar/Calendar";
+import Swal from 'sweetalert2';
+
 
 import Swal from 'sweetalert2';
 
