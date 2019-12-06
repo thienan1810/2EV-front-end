@@ -15,10 +15,16 @@ const UserSchema = mongoose.Schema(
     password: {
       type: String,
       isRequired: true
+    },
+    isAdmin:  {
+      type: Boolean,
+      isRequire: true,
+      default: false
     }
   },
   { timestamps: { createdAt: "createdAt" } }
 );
+
 
 const User = (module.exports = mongoose.model("User", UserSchema));
 
@@ -29,6 +35,7 @@ module.exports.addUser = (newUser, cb) => {
       if (err) throw err;
       newUser.password = hash;
       newUser.save(cb);
+
     });
   });
 };

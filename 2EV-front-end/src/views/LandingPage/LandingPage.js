@@ -20,6 +20,14 @@ import styles from "assets/jss/material-kit-react/views/landingPage.js";
 // Sections for this page
 import ProductSection from "./Sections/ProductSection.js";
 
+// react components for routing our app without refresh
+import { Link } from "react-router-dom";
+
+import { useDispatch, useSelector } from "react-redux";
+
+// import router HOC
+import { withRouter } from "react-router";
+
 const dashboardRoutes = [];
 
 const useStyles = makeStyles(styles);
@@ -27,11 +35,17 @@ const useStyles = makeStyles(styles);
 export default function LandingPage(props) {
   const classes = useStyles();
   const { ...rest } = props;
-  const pushTo = (route = "/") => () =>  {
+
+  const token = useSelector(state => state.user.token);
+
+  const pushTo = (route = "/") => () => {
     // Object Destructing. Same as const push = props.history.push but shorter and nicer.
-    const { history: { push } } = props;
+    const {
+      history: { push }
+    } = props;
     push(route);
   };
+
   return (
     <div>
       <Header
@@ -61,7 +75,7 @@ export default function LandingPage(props) {
               <Button
                 color="danger"
                 size="lg"
-                onClick={pushTo('/booking')}
+                onClick={token ? pushTo("/booking") : pushTo("/register")}
                 target="_blank"
                 rel="noopener noreferrer"
               >

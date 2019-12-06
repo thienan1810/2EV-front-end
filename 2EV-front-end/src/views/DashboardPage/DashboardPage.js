@@ -30,6 +30,7 @@ const useStyles = makeStyles(styles);
 export default function DashboardPage(props) {
   const classes = useStyles();
   const name = useSelector(state => state.user.name);
+  const isAdmin = useSelector(state => state.user.isAdmin);
   const { ...rest } = props;
   const imageClasses = classNames(
     classes.imgRaised,
@@ -67,7 +68,10 @@ export default function DashboardPage(props) {
                     align="center"
                     style={{ margin: 24 }}
                   >
-                    Welcome, <b>{name}</b>
+                    Welcome,{" "}
+                    <b>
+                      {name}
+                    </b>
                   </Typography>
                   <Typography variant="h6" align="center">
                     {hasEvents ? "Upcoming Appointments" : "No Appointments"}
