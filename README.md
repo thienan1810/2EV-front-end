@@ -8,12 +8,17 @@ Both front end and backend are code are available in this repository.
 **If there's any errors when compiling the front end/back end, check package.json and install missing dependencies.**
 
 **To run this project locally, first clone or download the zip files.**
+
 **To run the front end, type:**
+ 
   cd 2EV-front-end/2EV-front-end
+  
   npm start
   
 **To run the back end, type:**
+
   cd 2EV-front-end/2EV-front-end/backend
+  
   npm run dev
 
 **Known Issues:**
