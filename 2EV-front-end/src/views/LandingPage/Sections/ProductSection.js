@@ -3,9 +3,9 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 // @material-ui/icons
-import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import FilterIcon from '@material-ui/icons/Filter';
+import SentimentVerySatisfiedIcon from "@material-ui/icons/SentimentVerySatisfied";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import FilterIcon from "@material-ui/icons/Filter";
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
@@ -22,30 +22,23 @@ export default function ProductSection() {
       <GridContainer justify="center">
         <GridItem xs={12} sm={12} md={8}>
           <h2 className={classes.title}>Services</h2>
-          <h5 className={classes.description}>
-            This is the paragraph where you can write more details about your
-            product. Keep you user engaged by providing meaningful information.
-            Remember that by this time, the user is curious, otherwise he wouldn
-            {"'"}t scroll to get here. Add a button if you want the user to see
-            more.
-          </h5>
         </GridItem>
       </GridContainer>
       <div>
         <GridContainer>
           <GridItem xs={12} sm={12} md={4}>
             <InfoArea
-              title="Portrait"
-              description= "Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough."
-              icon={SentimentVerySatisfiedIcon}
+              title="Family"
+              description= "We know that family is important, my goal is to capture your family's special bond in the form of photographs."
+              icon={FilterIcon}
               iconColor="info"
               vertical
             />
           </GridItem>
           <GridItem xs={12} sm={12} md={4}>
             <InfoArea
-              title="Wedding"
-              description="Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough."
+              title="Events"
+              description= "Whether it's your wedding day or your graduation day, I assure to capture the perfect moment that you've been waiting for."
               icon={FavoriteIcon}
               iconColor="danger"
               vertical
@@ -53,9 +46,9 @@ export default function ProductSection() {
           </GridItem>
           <GridItem xs={12} sm={12} md={4}>
             <InfoArea
-              title="Headshot"
-              description="Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough."
-              icon={FilterIcon}
+              title="Fashion"
+              description= "Let's make everyone's jaw drops <3."
+              icon={SentimentVerySatisfiedIcon}
               iconColor="success"
               vertical
             />

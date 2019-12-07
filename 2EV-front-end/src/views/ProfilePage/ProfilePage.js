@@ -24,11 +24,19 @@ import studio2 from "assets/img/examples/studio-2.jpg";
 import studio3 from "assets/img/examples/studio-3.jpg";
 import studio4 from "assets/img/examples/studio-4.jpg";
 import studio5 from "assets/img/examples/studio-5.jpg";
-import work1 from "assets/img/examples/olu-eletu.jpg";
-import work2 from "assets/img/examples/clem-onojeghuo.jpg";
-import work3 from "assets/img/examples/cynthia-del-rio.jpg";
-import work4 from "assets/img/examples/mariya-georgieva.jpg";
-import work5 from "assets/img/examples/clem-onojegaw.jpg";
+import work1 from "assets/img/examples/event-1.jpg";
+import work2 from "assets/img/examples/event-2.jpg";
+import work3 from "assets/img/examples/event-3.jpg";
+import work4 from "assets/img/examples/event-4.jpg";
+import work5 from "assets/img/examples/event-5.jpg";
+
+import fashion1 from "assets/img/examples/fashion-1.jpg";
+import fashion2 from "assets/img/examples/fashion-2.jpg";
+import fashion3 from "assets/img/examples/fashion-3.jpg";
+import fashion4 from "assets/img/examples/fashion-4.jpg";
+//import fashion5 from "assets/img/examples/event-5.jpg";
+//import fashion from "assets/img/examples/event-5.jpg";
+
 
 import styles from "assets/jss/material-kit-react/views/profilePage.js";
 
@@ -69,13 +77,13 @@ export default function ProfilePage(props) {
                   <div className={classes.name}>
                     <h3 className={classes.title}>Kevin R.</h3>
                     <h6>PHOTOGRAPHER</h6>
-                    <Button justIcon link href="https://twitter.com/realDonaldTrump" className={classes.margin5}>
+                    <Button justIcon link href="https://twitter.com/" className={classes.margin5}>
                       <i className={"fab fa-twitter"} />
                     </Button>
-                    <Button justIcon link href="https://www.instagram.com/realdonaldtrump/" className={classes.margin5}>
+                    <Button justIcon link href="https://www.instagram.com/" className={classes.margin5}>
                       <i className={"fab fa-instagram"} />
                     </Button>
-                    <Button justIcon link href="https://www.facebook.com/DonaldTrump/" className={classes.margin5}>
+                    <Button justIcon link href="https://www.facebook.com/" className={classes.margin5}>
                       <i className={"fab fa-facebook"} />
                     </Button>
                   </div>
@@ -84,10 +92,9 @@ export default function ProfilePage(props) {
             </GridContainer>
             <div className={classes.description}>
               <p>
-                An artist of considerable range, Chet Faker — the name taken by
-                Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs
-                and records all of his own music, giving it a warm, intimate
-                feel with a solid groove structure.{" "}
+                Hello, My name is Kevin R. and I am the owner and photographer of Photos By Kevin. I am based in Dallas, 
+                TX and specialize in Family, Event, and Fashion. It's a honor to be your photographer and check
+                my recent work below!{" "}
               </p>
             </div>
             <GridContainer justify="center">
@@ -97,7 +104,7 @@ export default function ProfilePage(props) {
                   color="primary"
                   tabs={[
                     {
-                      tabButton: "Studio",
+                      tabButton: "Family",
                       tabIcon: Camera,
                       tabContent: (
                         <GridContainer justify="center">
@@ -129,7 +136,7 @@ export default function ProfilePage(props) {
                       )
                     },
                     {
-                      tabButton: "Work",
+                      tabButton: "Events",
                       tabIcon: Palette,
                       tabContent: (
                         <GridContainer justify="center">
@@ -166,36 +173,32 @@ export default function ProfilePage(props) {
                       )
                     },
                     {
-                      tabButton: "Favorite",
+                      tabButton: "Fashion",
                       tabIcon: Favorite,
                       tabContent: (
                         <GridContainer justify="center">
                           <GridItem xs={12} sm={12} md={4}>
                             <img
                               alt="..."
-                              src={work4}
+                              src={fashion1}
                               className={navImageClasses}
                             />
                             <img
                               alt="..."
-                              src={studio3}
+                              src={fashion2}
                               className={navImageClasses}
                             />
                           </GridItem>
                           <GridItem xs={12} sm={12} md={4}>
+                            
                             <img
                               alt="..."
-                              src={work2}
+                              src={fashion3}
                               className={navImageClasses}
                             />
                             <img
                               alt="..."
-                              src={work1}
-                              className={navImageClasses}
-                            />
-                            <img
-                              alt="..."
-                              src={studio1}
+                              src={fashion4}
                               className={navImageClasses}
                             />
                           </GridItem>

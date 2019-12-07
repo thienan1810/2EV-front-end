@@ -94,7 +94,7 @@ const BookingPage = props => {
         color="transparent"
         routes={dashboardRoutes}
         logo={logo}
-        brand="Photo by Kevin"
+        brand="Photos by Kevin"
         rightLinks={<HeaderLinks />}
         fixed
         changeColorOnScroll={{

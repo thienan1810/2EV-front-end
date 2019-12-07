@@ -36,7 +36,7 @@ export default function DashboardPage(props) {
         color="transparent"
         routes={dashboardRoutes}
         logo={logo}
-        brand="Photo By Kevin"
+        brand="Photos By Kevin"
         rightLinks={<HeaderLinks />}
         fixed
         changeColorOnScroll={{
