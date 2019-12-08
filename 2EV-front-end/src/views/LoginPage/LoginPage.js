@@ -61,7 +61,7 @@ export default function LoginPage(props) {
       Swal.fire({
         icon: "error",
         title: "Error",
-        text: e
+        text: "Email or Password don't match, please try again"
       });
     }
   };
